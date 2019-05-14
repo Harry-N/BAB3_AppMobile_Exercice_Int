@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/tvTitre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Projet de Bac 3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Nom de l'étudiant"
+        app:layout_constraintEnd_toStartOf="@+id/btnDétails"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
+
+    <EditText
+        android:id="@+id/etNumModif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="Numéro de la tâche"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/btnAjout"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/etActionAjout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Action(s) Réalisé(s)"
+        app:layout_constraintTop_toBottomOf="@+id/etDuréeAjout"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <EditText
+        android:id="@+id/etDuréeAjout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Durée (en heures)"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/etDateAjout"
+        tools:layout_editor_absoluteX="37dp" />
+
+    <TextView
+        android:id="@+id/etDateAjout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/etNom"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+
+    <Button
+        android:id="@+id/btnAjout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une tâche"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etActionAjout" />
+
+    <EditText
+        android:id="@+id/etNumSupp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:hint="Numéro de la tâche"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/btnModif"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+
+    <TextView
+        android:id="@+id/etDateModif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@+id/etNumModif"
+        tools:layout_editor_absoluteX="53dp" />
+
+    <EditText
+        android:id="@+id/etDuréeModif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Durée (en heures)"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/etDateModif"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/etActionModif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Action(s) réalisée(s)"
+        app:layout_constraintTop_toBottomOf="@+id/etDuréeModif"
+        tools:layout_editor_absoluteX="-41dp" />
+
+
+
+    <Button
+        android:id="@+id/btnModif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Modifier une tâche"
+        app:layout_constraintTop_toBottomOf="@+id/etActionModif"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <Button
+        android:id="@+id/btnSupp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Supprimer une tâche"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNumSupp" />
+
+    <Button
+        android:id="@+id/btnDétails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="Détails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
+</android.support.constraint.ConstraintLayout>
