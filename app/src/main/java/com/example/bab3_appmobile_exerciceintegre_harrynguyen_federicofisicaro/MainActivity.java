@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS "+ TABLE_NAME+ " (Id INTEGER PRIMARY KEY AUTOINCREMENT," +"Nom TEXT, Date TEXT, Durée NUMBER, Actions TEXT);");
 
-
         Ajout=(Button)findViewById(R.id.btnAjout);
         Suppression=(Button)findViewById(R.id.btnSupp);
         Modif=(Button)findViewById(R.id.btnModif);
@@ -119,17 +118,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               int Numéro =Integer.valueOf(NumSupp.getText().toString());
+               String Numéro = NumSupp.getText().toString();
                String Étudiant =  Nom.getText().toString();
 
-               Cursor c = db.query(TABLE_NAME, new String[]{"Id","Nom"},"Id LIKE \""+Numéro+"\" AND Nom LIKE \""+ Étudiant+"\"",null,null,null,null);
-               if (c.getCount()!=0){
-                   db.delete(TABLE_NAME, "Id LIKE \"" + Numéro +"\" AND Nom LIKE \"" + Étudiant + "\" ", null);
-                   //db.close();
-                   Toast.makeText(getApplicationContext(),"Bravo, vous avez supprimé une tâche !",Toast.LENGTH_LONG).show();
+               if (!Numéro.isEmpty()) {
+                   int NuméroInt =Integer.valueOf(NumSupp.getText().toString());
+                   Cursor c = db.query(TABLE_NAME, new String[]{"Id", "Nom"}, "Id LIKE \"" + Numéro + "\" AND Nom LIKE \"" + Étudiant + "\"", null, null, null, null);
+                   if (c.getCount() != 0) {
+                       db.delete(TABLE_NAME, "Id LIKE \"" + Numéro + "\" AND Nom LIKE \"" + Étudiant + "\" ", null);
+                       //db.close();
+                       Toast.makeText(getApplicationContext(), "Bravo, vous avez supprimé une tâche !", Toast.LENGTH_LONG).show();
+                   } else
+                       Toast.makeText(getApplicationContext(), "Il n'y a pas de tâche numéro "+ NuméroInt +" pour l'Étudiant "+ Étudiant +"", Toast.LENGTH_LONG).show();
                }
-                else Toast.makeText(getApplicationContext(),"Vous n'avez pas précisé le numéro de la tâche et/ou le nom de l'étudiant",Toast.LENGTH_LONG).show();
-
+               else Toast.makeText(getApplicationContext(), "Vous n'avez pas précisé le numéro de la tâche", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String Action = ActionModif.getText().toString();
 
+
                 if (Numéro.length()!=0) {
                     int NuméroInt =Integer.valueOf(NumModif.getText().toString());
 
@@ -195,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                         //db.close();
                         Toast.makeText(getApplicationContext(), "Bravo, vous avez modifié une tâche !", Toast.LENGTH_LONG).show();
                     } else
-                        Toast.makeText(getApplicationContext(), "Il n'y a pas de tâche numéro "+ NuméroInt +" pour cet étudiant", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Il n'y a pas de tâche numéro "+ NuméroInt +" pour l'Étudiant "+ Étudiant +"", Toast.LENGTH_LONG).show();
                 }
                 else Toast.makeText(getApplicationContext(), "Vous n'avez pas précisé le numéro de la tâche", Toast.LENGTH_LONG).show();
             }
@@ -204,9 +207,10 @@ public class MainActivity extends AppCompatActivity {
         Détails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                db.close();
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-              //  intent.putExtra("name",(Nom.getText()).toString());
+                intent.putExtra("name",(Nom.getText()).toString());
                 startActivity(intent);
             }
         });
