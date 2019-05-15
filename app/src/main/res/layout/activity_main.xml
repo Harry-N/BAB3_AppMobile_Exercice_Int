@@ -9,33 +9,44 @@
 
     <TextView
         android:id="@+id/tvTitre"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.TextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Projet de Bac 3"
+
+        android:background="@color/colorPrimary"
+        android:text="Heures prestées en projet Ba3"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="#FAFAFA"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etNom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="205dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:hint="Nom de l'étudiant"
+        android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/btnDétails"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
 
     <Button
         android:id="@+id/btnDétails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="127dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="Détails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
@@ -46,9 +57,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="96dp"
-        app:layout_constraintTop_toBottomOf="@+id/etNom"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_marginTop="164dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:layout_editor_absoluteX="-37dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -88,6 +99,7 @@
 
             <Button
                 android:id="@+id/btnAjout"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ajouter une tâche"
@@ -99,13 +111,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:hint="Numéro de la tâche"
+                android:hint="Numéro de la tâche à supprimer"
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/btnAjout"
                 tools:layout_editor_absoluteX="0dp" />
 
             <Button
                 android:id="@+id/btnSupp"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -118,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:hint="Numéro de la tâche"
+                android:hint="Numéro de la tâche à modifier"
                 android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/btnSupp"
                 tools:layout_editor_absoluteX="0dp" />
@@ -154,6 +167,7 @@
 
             <Button
                 android:id="@+id/btnModif"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -164,4 +178,18 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="206dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNom"
+        app:srcCompat="@drawable/fpms" />
 </android.support.constraint.ConstraintLayout>

@@ -21,7 +21,7 @@ public class DetailsActivity extends AppCompatActivity {
     private SQLiteDatabase db;
 
     Button back;
-    TextView Result, nbrHeures;
+    TextView Result, nbrHeures, Etudiant;
 
     ArrayList<Integer> Ids = new ArrayList<Integer>();
     ArrayList<String> Actions = new ArrayList<String> ();
@@ -35,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         back=findViewById(R.id.btnBack);
@@ -45,10 +46,15 @@ public class DetailsActivity extends AppCompatActivity {
 
         Result=findViewById(R.id.tvAff);
         nbrHeures= findViewById(R.id.tvHTot);
+        Etudiant=findViewById(R.id.tvEtudiant);
+
 
 
         Intent intent= getIntent();
         nom = intent.getStringExtra("name");
+
+        Etudiant.setText(nom);
+
        // Toast.makeText(getApplicationContext(), "Nom de l'étudiant "+nom+"", Toast.LENGTH_LONG).show();
 
         Cursor c = db.query(TABLE_NAME, new String[] { "Id", "Nom", "Date", "Durée", "Actions" }, "Nom LIKE \"" + nom + "\"", null, null, null,
@@ -73,23 +79,27 @@ public class DetailsActivity extends AppCompatActivity {
             }
 
             for(int i=0;i<c.getCount();i++){
-                SBuilder.append(" ID : " + (Ids.get(i)).toString() + "\n Action : " + Actions.get(i)+"\n Durée : "+ (Durées.get(i)).toString()+"\n Date : " + Dates.get(i));
+                SBuilder.append(" ID : " + (Ids.get(i)).toString() + "\n Date : " + Dates.get(i) + "\n Durée : "+ (Durées.get(i)).toString() +"\n Action : " + Actions.get(i));
                 SBuilder.append("\n\n");
                 nbrtotH=nbrtotH+Durées.get(i);
             }
 
             Result.setText(SBuilder.toString());
             Result.setMovementMethod(new ScrollingMovementMethod());
-            nbrHeures.setText(Integer.toString(nbrtotH));
+            nbrHeures.setText(Integer.toString(nbrtotH)+"h");
             c.close();
         }
-        db.close();
+
 
       back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                db.close();
                 Intent intent = new Intent(DetailsActivity.this, MainActivity.class);
+                finish();
                 startActivity(intent);
+
+
             }
         });
 

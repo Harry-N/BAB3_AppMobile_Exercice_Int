@@ -212,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 intent.putExtra("name",(Nom.getText()).toString());
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -220,13 +221,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void updateLabelAjout() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         DateAjout.setText(sdf.format(myCalendar.getTime()));
     }
 
     private void updateLabelModif() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         DateModif.setText(sdf.format(myCalendar.getTime()));
     }
