@@ -204,8 +204,9 @@ public class MainActivity extends AppCompatActivity {
         Détails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra("name",(Nom.getText()).toString());
+              //  intent.putExtra("name",(Nom.getText()).toString());
                 startActivity(intent);
             }
         });

@@ -30,112 +30,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
 
-    <EditText
-        android:id="@+id/etNumModif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:hint="Numéro de la tâche"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/btnAjout"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <EditText
-        android:id="@+id/etActionAjout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Action(s) Réalisé(s)"
-        app:layout_constraintTop_toBottomOf="@+id/etDuréeAjout"
-        tools:layout_editor_absoluteX="-16dp" />
-
-    <EditText
-        android:id="@+id/etDuréeAjout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Durée (en heures)"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/etDateAjout"
-        tools:layout_editor_absoluteX="37dp" />
-
-    <TextView
-        android:id="@+id/etDateAjout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@+id/etNom"
-        tools:layout_editor_absoluteX="0dp" />
-
-
-
-    <Button
-        android:id="@+id/btnAjout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ajouter une tâche"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etActionAjout" />
-
-    <EditText
-        android:id="@+id/etNumSupp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:hint="Numéro de la tâche"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/btnModif"
-        tools:layout_editor_absoluteX="16dp" />
-
-
-
-    <TextView
-        android:id="@+id/etDateModif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@+id/etNumModif"
-        tools:layout_editor_absoluteX="53dp" />
-
-    <EditText
-        android:id="@+id/etDuréeModif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Durée (en heures)"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/etDateModif"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <EditText
-        android:id="@+id/etActionModif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Action(s) réalisée(s)"
-        app:layout_constraintTop_toBottomOf="@+id/etDuréeModif"
-        tools:layout_editor_absoluteX="-41dp" />
-
-
-
-    <Button
-        android:id="@+id/btnModif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Modifier une tâche"
-        app:layout_constraintTop_toBottomOf="@+id/etActionModif"
-        tools:layout_editor_absoluteX="0dp" />
-
-
-    <Button
-        android:id="@+id/btnSupp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Supprimer une tâche"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNumSupp" />
-
     <Button
         android:id="@+id/btnDétails"
         android:layout_width="wrap_content"
@@ -145,4 +39,129 @@
         android:text="Détails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitre" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="96dp"
+        app:layout_constraintTop_toBottomOf="@+id/etNom"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/etDateAjout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Date"
+                android:inputType="date"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/etNom"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <EditText
+                android:id="@+id/etDuréeAjout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Durée (en heures)"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/etDateAjout"
+                tools:layout_editor_absoluteX="37dp" />
+
+            <EditText
+                android:id="@+id/etActionAjout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Action(s) Réalisé(s)"
+                app:layout_constraintTop_toBottomOf="@+id/etDuréeAjout"
+                tools:layout_editor_absoluteX="-16dp" />
+
+
+            <Button
+                android:id="@+id/btnAjout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ajouter une tâche"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etActionAjout" />
+
+            <EditText
+                android:id="@+id/etNumSupp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:hint="Numéro de la tâche"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/btnAjout"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <Button
+                android:id="@+id/btnSupp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Supprimer une tâche"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNumSupp" />
+
+            <EditText
+                android:id="@+id/etNumModif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:hint="Numéro de la tâche"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/btnSupp"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+            <TextView
+                android:id="@+id/etDateModif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date"
+                android:inputType="date"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/etNumModif"
+                tools:layout_editor_absoluteX="-33dp" />
+
+            <EditText
+                android:id="@+id/etDuréeModif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Durée (en heures)"
+                android:inputType="number"
+                app:layout_constraintTop_toBottomOf="@+id/etDateModif"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <EditText
+                android:id="@+id/etActionModif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Action(s) réalisée(s)"
+                app:layout_constraintTop_toBottomOf="@+id/etDuréeModif"
+                tools:layout_editor_absoluteX="-41dp" />
+
+
+            <Button
+                android:id="@+id/btnModif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Modifier une tâche"
+                app:layout_constraintTop_toBottomOf="@+id/etActionModif"
+                tools:layout_editor_absoluteX="0dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

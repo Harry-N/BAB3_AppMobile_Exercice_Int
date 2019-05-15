@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private static final String DB_NAME = "Exo_int.db";
+   /* private static final String DB_NAME = "Exo_int.db";
     private static final String TABLE_NAME = "Data";
     private SQLiteDatabase db;
 
@@ -32,13 +32,13 @@ public class DetailsActivity extends AppCompatActivity {
 
     String nom;
     StringBuilder SBuilder = new StringBuilder();
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_details);
 
-        db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
+       /* db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS "+ TABLE_NAME+ " (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nom TEXT, Date TEXT, Durée NUMBER, Actions TEXT);");
 
         Result=findViewById(R.id.tvAff);
@@ -80,9 +80,9 @@ public class DetailsActivity extends AppCompatActivity {
             c.close();
         }
         db.close();
+*/
 
-
-        back.setOnClickListener(new View.OnClickListener() {
+/*        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailsActivity.this, MainActivity.class);
@@ -91,6 +91,6 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-
+*/
     }
 }
