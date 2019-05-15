@@ -96,14 +96,15 @@ public class MainActivity extends AppCompatActivity {
 
                 String Étudiant= Nom.getText().toString();
                 String Jour = DateAjout.getText().toString();
-                int Temps = Integer.valueOf(DuréeAjout.getText().toString());
+                String Temps=DuréeAjout.getText().toString();
                 String Action = ActionAjout.getText().toString();
 
-                if(Étudiant.length()!=0&& Jour.length()!=0 && Temps!=0 && DuréeAjout.getText().toString().length()!=0 && Action.length()!=0) {
+                if(Étudiant.length()!=0&& Jour.length()!=0 && Temps.length()!=0 && Action.length()!=0) {
 
+                    int TempsInt = Integer.valueOf(DuréeAjout.getText().toString());
                     db.execSQL("INSERT INTO DATA (Nom, Date, Durée, Actions) " +
-                            "VALUES ('"+Étudiant+"','"+Jour+"','"+Temps+"','"+Action+"')",new String[]{});
-                    db.close();
+                            "VALUES ('"+Étudiant+"','"+Jour+"','"+TempsInt+"','"+Action+"')",new String[]{});
+                   // db.close();
 
                     Toast.makeText(getApplicationContext(),"Bravo, vous avez ajouté une nouvelle tâche. Continuez comme ça !",Toast.LENGTH_LONG).show();
                 }
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                Cursor c = db.query(TABLE_NAME, new String[]{"Id","Nom"},"Id LIKE \""+Numéro+"\" AND Nom LIKE \""+ Étudiant+"\"",null,null,null,null);
                if (c.getCount()!=0){
                    db.delete(TABLE_NAME, "Id LIKE \"" + Numéro +"\" AND Nom LIKE \"" + Étudiant + "\" ", null);
-                   db.close();
+                   //db.close();
                    Toast.makeText(getApplicationContext(),"Bravo, vous avez supprimé une tâche !",Toast.LENGTH_LONG).show();
                }
                 else Toast.makeText(getApplicationContext(),"Vous n'avez pas précisé le numéro de la tâche et/ou le nom de l'étudiant",Toast.LENGTH_LONG).show();
@@ -160,38 +161,43 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String Étudiant =  Nom.getText().toString();
-                int Numéro =Integer.valueOf(NumSupp.getText().toString());
+                String Numéro= NumModif.getText().toString();
                 String Jour = DateModif.getText().toString();
-                int Temps = Integer.valueOf(DuréeModif.getText().toString());
+                String Temps=DuréeModif.getText().toString();
+
                 String Action = ActionModif.getText().toString();
 
-                Cursor c = db.query(TABLE_NAME, new String[]{"Id","Nom"},"Id LIKE \""+Numéro+"\" AND Nom LIKE \""+ Étudiant+"\"",null,null,null,null);
-                if (c.getCount()!=0){
-                    if(!Jour.isEmpty()){
+                if (Numéro.length()!=0) {
+                    int NuméroInt =Integer.valueOf(NumModif.getText().toString());
 
-                        ContentValues content = new ContentValues();
-                        content.put("Date",Jour);
-                        db.update(TABLE_NAME, content, "Id = " + Integer.valueOf(Numéro), null);
-                    }
+                    Cursor c = db.query(TABLE_NAME, new String[]{"Id", "Nom"}, "Id LIKE \"" +NuméroInt+ "\" AND Nom LIKE \"" + Étudiant + "\"", null, null, null, null);
+                   if (c.getCount() != 0) {
+                        if (!Jour.isEmpty()) {
 
-                    if(Temps!=0){
-                        ContentValues content = new ContentValues();
-                        content.put("Durée",Temps);
-                        db.update(TABLE_NAME, content, "Id = " + Integer.valueOf(Numéro), null);
-                    }
+                            ContentValues content = new ContentValues();
+                            content.put("Date", Jour);
+                            db.update(TABLE_NAME, content, "Id = " + NuméroInt, null);
+                        }
 
-                    if(!Action.isEmpty()){
-                        ContentValues content = new ContentValues();
-                        content.put("Actions",Action);
-                        db.update(TABLE_NAME, content, "id = " + Integer.valueOf(Numéro), null);
-                    }
+                        if (Temps.length()!= 0) {
+                            int TempsInt = Integer.valueOf(DuréeModif.getText().toString());
+                            ContentValues content = new ContentValues();
+                            content.put("Durée", TempsInt);
+                            db.update(TABLE_NAME, content, "Id = " + NuméroInt, null);
+                        }
 
-                    db.close();
-                    Toast.makeText(getApplicationContext(),"Bravo, vous avez modifié une tâche !",Toast.LENGTH_LONG).show();
+                        if (!Action.isEmpty()) {
+                            ContentValues content = new ContentValues();
+                            content.put("Actions", Action);
+                            db.update(TABLE_NAME, content, "id = " + Integer.valueOf(Numéro), null);
+                        }
+
+                        //db.close();
+                        Toast.makeText(getApplicationContext(), "Bravo, vous avez modifié une tâche !", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(getApplicationContext(), "Il n'y a pas de tâche numéro "+ NuméroInt +" pour cet étudiant", Toast.LENGTH_LONG).show();
                 }
-                else Toast.makeText(getApplicationContext(),"Vous n'avez pas précisé le numéro de la tâche et/ou le nom de l'étudiant",Toast.LENGTH_LONG).show();
-
-
+                else Toast.makeText(getApplicationContext(), "Vous n'avez pas précisé le numéro de la tâche", Toast.LENGTH_LONG).show();
             }
         });
 
